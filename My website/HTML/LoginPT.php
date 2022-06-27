@@ -21,6 +21,7 @@ if (isset($_POST["firstnameSignup"], $_POST["lastnameSignup"], $_POST["emailSign
 
             $_SESSION["Name"] = $_POST["firstnameSignup"] . " " . $_POST["lastnameSignup"];
             $_SESSION["UserLogged"] = true;
+            $_SESSION["UserCart"] = [];
 
             header("Location: HomeEN.php");
             die();
@@ -50,6 +51,7 @@ if (isset($_POST["emailSignin"], $_POST["passwordSignin"])) {
         if (password_verify($_POST["passwordSignin"], $row["PSW"])) {
             $_SESSION["Name"] = $row["FirstName"] . " " . $row["LastName"];
             $_SESSION["UserLogged"] = true;
+            $_SESSION["UserCart"] = [];
 
             header("Location: HomeEN.php");
             die();

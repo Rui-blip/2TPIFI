@@ -10,6 +10,9 @@ include_once("comonCode.php");
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href="../CSS/Style.css?t<?= time(); ?>">
+    <link href="../CSS/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../CSS/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src='../CSS/bootstrap/js/bootstrap.bundle.min.js'></script>
     <script src='main.js'></script>
 </head>
 

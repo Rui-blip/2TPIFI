@@ -37,42 +37,50 @@ function NavBar($URL, $ActivePage, $lang)
 
 
 
-
             <a class="alinks <?php if ($ActivePage == "about") print "active" ?>" href="About<?= $lang ?>.php"><?php if ($lang == "EN") {
                                                                                                                     print "About";
                                                                                                                 } else {
                                                                                                                     print "Acerca De";
                                                                                                                 } ?></a>
 
-
-            <?php if ($_SESSION["UserLogged"]) {
-            ?>
-                <a onclick="document.getElementById('mylogout').submit();" class="alinks <?php if ($ActivePage == "login") print "active" ?>" href="#"><?php if ($lang == "EN") {
-                                                                                                                                                            print "Logout";
-                                                                                                                                                        } else {
-                                                                                                                                                            print "Desconectar";
-                                                                                                                                                        } ?></a>
-
-                <div style="color:white;"><?php if ($lang == "EN") {
-                                                print "Hello,";
-                                            } else {
-                                                print "Ola, ";
-                                            } ?> <?= $_SESSION["Name"] ?></div>
-                <form method="POST" id="mylogout" hidden>
-                    <input type="hidden" name="logoutA">
-                </form>
-            <?php
-            } else {
-            ?>
-                <a class="alinks <?php if ($ActivePage == "login") print "active" ?>" href="Login<?= $lang ?>.php"><?php if ($lang == "EN") {
-                                                                                                                        print "Login";
-                                                                                                                    } else {
-                                                                                                                        print "Conectar";
-                                                                                                                    } ?></a>
-            <?php
-            }
-            ?>
         </div>
+        <?php if ($_SESSION["UserLogged"]) {
+        ?>
+            <a onclick="document.getElementById('mylogout').submit();" class="alinks <?php if ($ActivePage == "login") print "active" ?>" href="#"><?php if ($lang == "EN") {
+                                                                                                                                                        print "Logout";
+                                                                                                                                                    } else {
+                                                                                                                                                        print "Desconectar";
+                                                                                                                                                    } ?></a>
+
+            <div style="color:white;"><?php if ($lang == "EN") {
+                                            print "Hello, ";
+                                        } else {
+                                            print "Ola, ";
+                                        } ?><?= $_SESSION["Name"] ?></div>
+            <form method="POST" id="mylogout" hidden>
+                <input type="hidden" name="logoutA">
+            </form>
+        <?php
+        } else {
+        ?>
+            <a class="alinks <?php if ($ActivePage == "login") print "active" ?>" href="Login<?= $lang ?>.php"><?php if ($lang == "EN") {
+                                                                                                                    print "Login";
+                                                                                                                } else {
+                                                                                                                    print "Conectar";
+                                                                                                                } ?></a>
+        <?php
+        }
+        ?>
+
+
+        <a class="alinks <?php if ($ActivePage == "shoppingcart") print "active" ?>" href="ShoppingCart<?= $lang ?>.php"><?php if ($lang == "EN") {
+                                                                                                                                print "ShoppingCart";
+                                                                                                                            } else {
+                                                                                                                                print "Carrinho";
+                                                                                                                            } ?></a>
+
+
+
 
         <a href="<?= $URL ?>">
             <img src="../IMAGES/Languages.jpg" alt="Languages" width="69px" height="37">

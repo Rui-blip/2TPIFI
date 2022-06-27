@@ -1,5 +1,13 @@
 <?php
 include_once("comonCode.php");
+
+if (isset($_POST["IDProduct"])) {
+    if ($_SESSION["UserLogged"] == false) {
+        print "<script>alert('You are not Logged In');</script>";
+        header("Refresh:0");
+        die();
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +18,9 @@ include_once("comonCode.php");
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href="../CSS/Style.css?t<?= time(); ?>">
+    <link href="../CSS/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../CSS/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src='../CSS/bootstrap/js/bootstrap.bundle.min.js'></script>
     <script src='main.js'></script>
 </head>
 
@@ -42,7 +53,10 @@ include_once("comonCode.php");
                     <a href="ShowDetailedProducts.php?ProductID=<?= $row["ProductsID"] ?>&lang=EN"> <img class="imageproduct" src="<?= $row["ProductsImage"] ?>" alt="img"></a>
                     <div><?= $row["DescriptionText"] ?></div>
                     <div><a href="<?= $row["ProductLink"] ?>" target="_blank"><span class="blackprice"><?= $row["ProductsPrice"] ?></span></a></div>
-
+                    <button onclick="document.getElementById('formAddID<?= $row['ProductsID'] ?>').submit();" class="btn btn-dark" type="submit">Add to cart</button>
+                    <form method="POST" hidden id="formAddID<?= $row["ProductsID"] ?>">
+                        <input type="text" value="<?= $row["ProductsID"] ?>" name="IDProduct">
+                    </form>
                 </div>
 
         <?php
